@@ -13,7 +13,7 @@ const arcs = [
             "Fase Final: Duelos de um contra um"
         ],
         characters: ["Gon Freecss", "Killua Zoldyck", "Kurapika", "Leorio", "Hisoka", "Illumi"],
-        image: "../assets/images/arcs/exame.webp"
+        image: "/assets/images/arcs/exame.webp"
     },
     {
         id: "zoldyck",
@@ -28,7 +28,7 @@ const arcs = [
             "Fuga de Killua"
         ],
         characters: ["Killua Zoldyck", "Gon Freecss", "Silva Zoldyck", "Zeno Zoldyck", "Milluki Zoldyck", "Canary"],
-        image: "../assets/images/arcs/familia_killua.jpg"
+        image: "/assets/images/arcs/familia_killua.jpg"
     },
     {
         id: "heavens-arena",
@@ -44,7 +44,7 @@ const arcs = [
             "Batalha contra Hisoka"
         ],
         characters: ["Gon Freecss", "Killua Zoldyck", "Wing", "Zushi", "Hisoka"],
-        image: "../assets/images/arcs/arena.png"
+        image: "/assets/images/arcs/arena.png"
     },
     {
         id: "yorkshin",
@@ -60,7 +60,7 @@ const arcs = [
             "Resgate de Gon e Killua"
         ],
         characters: ["Kurapika", "Gon Freecss", "Killua Zoldyck", "Leorio", "Chrollo Lucilfer", "Hisoka", "Membros do Phantom Troupe"],
-        image: "../assets/images/arcs/york.jpg"
+        image: "/assets/images/arcs/york.jpg"
     },
     {
         id: "greed-island",
@@ -76,7 +76,7 @@ const arcs = [
             "Batalha contra os Jogadores Bomber"
         ],
         characters: ["Gon Freecss", "Killua Zoldyck", "Biscuit Krueger", "Genthru", "Outros jogadores"],
-        image: "../assets/images/arcs/island.webp"
+        image: "/assets/images/arcs/island.webp"
     },
     {
         id: "chimera-ant",
@@ -92,7 +92,7 @@ const arcs = [
             "Sacrifício final"
         ],
         characters: ["Gon Freecss", "Killua Zoldyck", "Isaac Netero", "Neferpitou", "Menthuthuyoupi", "Shaiapouf", "Meruem"],
-        image: "../assets/images/arcs/formigas.webp"
+        image: "/assets/images/arcs/formigas.webp"
     },
     {
         id: "election",
@@ -108,7 +108,7 @@ const arcs = [
             "Resolução do arco de Gon"
         ],
         characters: ["Gon Freecss", "Killua Zoldyck", "Leorio", "Kurapika", "Pariston Hill", "Cheadle", "Alluka Zoldyck"],
-        image: "../assets/images/arcs/votacao.webp"
+        image: "/assets/images/arcs/votacao.webp"
     },
     {
         id: "dark-continent",
@@ -124,7 +124,7 @@ const arcs = [
             "Desenvolvimento do sistema de sucessão"
         ],
         characters: ["Kurapika", "Leorio", "Ging Freecss", "Pariston Hill", "Príncipe Woble", "Membros dos Zodíacos"],
-        image: "../assets/images/arcs/negro.webp"
+        image: "/assets/images/arcs/negro.webp"
     }
 ];
 

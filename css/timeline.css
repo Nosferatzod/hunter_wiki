@@ -22,6 +22,7 @@
     position: relative;
     width: 50%;
     box-sizing: border-box;
+    margin-bottom: 30px;
 }
 
 .timeline-item::after {
@@ -45,7 +46,7 @@
 }
 
 .timeline-content {
-    padding: 20px 30px;
+    padding: 20px;
     background-color: rgba(19, 15, 64, 0.8);
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -68,6 +69,16 @@
     margin-bottom: 10px;
 }
 
+.timeline-content h3 {
+    margin-top: 0;
+    color: var(--secondary-color);
+}
+
+.timeline-content p {
+    margin-bottom: 15px;
+}
+
+/* Responsividade para Mobile */
 @media screen and (max-width: 768px) {
     .timeline::after {
         left: 31px;
@@ -77,6 +88,7 @@
         width: 100%;
         padding-left: 70px;
         padding-right: 25px;
+        margin-bottom: 40px; /* Aumenta o espaçamento entre itens */
     }
 
     .timeline-item::after {
@@ -91,5 +103,42 @@
     .timeline-item:nth-child(even) .timeline-content {
         border-left: 3px solid var(--secondary-color);
         border-right: none;
+    }
+
+    .timeline-content {
+        padding: 15px;
+    }
+
+    /* Ajuste para garantir que o conteúdo não fique muito apertado */
+    .timeline-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .timeline-date {
+        font-size: 0.9rem;
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media screen and (max-width: 480px) {
+    .timeline-item {
+        padding-left: 60px;
+        padding-right: 15px;
+        margin-bottom: 35px;
+    }
+
+    .timeline-item::after {
+        width: 20px;
+        height: 20px;
+        left: 15px;
+    }
+
+    .timeline-content {
+        padding: 12px;
     }
 }

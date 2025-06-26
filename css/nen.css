@@ -158,3 +158,155 @@ p{
 li {
     color: white;
 }
+/* Círculo de Nen Interativo */
+.nen-circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .nen-circle-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
+
+.nen-circle {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.nen-type {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform-origin: center;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid white;
+}
+.nen-type::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+.nen-type:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.nen-info-panel {
+    background-color: rgba(19, 15, 64, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--secondary-color);
+}
+
+.nen-info-panel h4 {
+    color: var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#nen-type-examples, #nen-type-abilities {
+    color: white;
+    margin-top: 15px;
+}
+
+#nen-type-examples::before {
+    
+    content: "Personagens:";
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#nen-type-abilities::before {
+    content: "Habilidades:";
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.nen-type:active::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+/* Ajustes para mobile - Círculo mais à esquerda */
+@media (max-width: 767.98px) {
+    .nen-circle-container {
+        align-items: flex-start; /* Alinha o conteúdo à esquerda */
+        padding-left: 15px; /* Adiciona um pequeno padding */
+    }
+        .nen-circle {
+        margin-bottom: 30px; /* Espaço entre o círculo e o painel de informações */
+    }
+    .nen-circle {
+        margin: 0; /* Remove a margem automática que centralizava */
+        transform: translateX(-15px); /* Move um pouco para a esquerda */
+    }
+        .nen-circle-container {
+        gap: 60px; /* Aumenta o espaço entre os elementos */
+    }
+
+    .nen-info-panel {
+        margin-left: 15px; /* Alinha com o círculo */
+        width: calc(100% - 30px); /* Ajusta a largura */
+    }
+}
+
+/* Ajuste adicional para telas muito pequenas */
+@media (max-width: 400px) {
+    .nen-circle {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .nen-type {
+        width: 70px;
+        height: 70px;
+        font-size: 0.9rem;
+    }
+}

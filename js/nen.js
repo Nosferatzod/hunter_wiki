@@ -294,4 +294,93 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
         }
     });
+
+    // Círculo de Nen Interativo
+    const nenCircle = document.querySelector('.nen-circle');
+    const nenTypeName = document.getElementById('nen-type-name');
+    const nenTypeDescription = document.getElementById('nen-type-description');
+    const nenTypeExamples = document.getElementById('nen-type-examples');
+    const nenTypeAbilities = document.getElementById('nen-type-abilities');
+
+    // Posições dos tipos no círculo (ângulos em graus)
+    const typePositions = [
+        { type: "enhancer", angle: 0 },       // Topo
+        { type: "transmuter", angle: 60 },    // Topo-direita
+        { type: "conjurer", angle: 120 },     // Baixo-direita
+        { type: "specialist", angle: 180 },   // Baixo
+        { type: "manipulator", angle: 240 },  // Baixo-esquerda
+        { type: "emitter", angle: 300 }       // Topo-esquerda
+    ];
+
+    // Criar elementos do círculo
+    typePositions.forEach(pos => {
+        const nenType = nenTypes.find(t => t.type === pos.type);
+        if (!nenType) return;
+
+        const element = document.createElement('div');
+        element.className = `nen-type ${nenType.type}`;
+        element.textContent = nenType.name.split(' ')[0]; // Mostra apenas o nome principal
+        element.style.backgroundColor = nenType.color;
+        
+        // Posicionamento no círculo
+        const radius = 120; // Raio do círculo
+        const angleInRad = (pos.angle - 90) * Math.PI / 180; // -90 para começar no topo
+        const x = radius * Math.cos(angleInRad);
+        const y = radius * Math.sin(angleInRad);
+        
+        element.style.left = `calc(50% + ${x}px)`;
+        element.style.top = `calc(50% + ${y}px)`;
+        element.style.transform = 'translate(-50%, -50%)';
+        
+        // Atraso animação para criar efeito sequencial
+        element.style.animationDelay = `${pos.angle/60 * 0.2}s`;
+        
+        // Evento de clique
+        element.addEventListener('click', () => {
+            // Atualizar painel de informações
+            nenTypeName.textContent = nenType.name;
+            nenTypeName.style.color = nenType.color;
+            nenTypeDescription.textContent = nenType.description;
+            
+            // Exemplos de personagens
+            nenTypeExamples.innerHTML = nenType.examples.map(ex => 
+                `<span class="badge" style="background-color: ${nenType.color}">${ex}</span>`
+            ).join(' ');
+            
+            // Habilidades
+            nenTypeAbilities.innerHTML = nenType.abilities.map(ability => 
+                `<li>${ability}</li>`
+            ).join('');
+            
+            // Destaque no círculo
+            document.querySelectorAll('.nen-type').forEach(el => {
+                el.style.transform = 'translate(-50%, -50%)';
+                el.style.zIndex = '1';
+            });
+            element.style.transform = 'translate(-50%, -50%) scale(1.2)';
+            element.style.zIndex = '10';
+        });
+        
+        nenCircle.appendChild(element);
+    });
+
+    // Selecionar o primeiro tipo por padrão
+    setTimeout(() => {
+        document.querySelector('.nen-type').click();
+    }, 500);
+
+    // Tooltips para dispositivos móveis
+    if ('ontouchstart' in window) {
+        document.querySelectorAll('.nen-type').forEach(el => {
+            el.setAttribute('data-bs-toggle', 'tooltip');
+            el.setAttribute('data-bs-placement', 'top');
+            el.setAttribute('title', el.textContent);
+        });
+        
+        // Inicialize tooltips do Bootstrap
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    }
 });
